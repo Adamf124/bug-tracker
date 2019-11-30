@@ -8,14 +8,14 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 const MongoClient = require('mongodb').MongoClient;
-const mongoose = require('mongoose')
 
 app.use(cors());
 app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-
+// Go ahead and use the MongoDB full driver settings and sub the uri string with the 
+// env variables
 client.connect(err => {
   const collection = client.db("test").collection("devices");
   // perform actions on the collection object
