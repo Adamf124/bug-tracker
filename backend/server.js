@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-
+const mongoose = require('mongoose')
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -14,21 +14,18 @@ app.use(express.json());
 
 // <------ Database connection ------>
 const uri = process.env.ATLAS_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
-// Go ahead and use the MongoDB full driver settings and sub the uri string with the 
-// env variables
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
 
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+const connection = mongoose.connection;
+connection.once('open', () => {
+  console.log("MongoDB database connection established successfully");
+})
 // <------ API Routes ------>
-// const exercisesRouter = require('./routes/exercises');
-// const usersRouter = require('./routes/users');
+const exercisesRouter = require('./routes/exercises');
+const usersRouter = require('./routes/users');
 
-// app.use('/exercises', exercisesRouter);
-// app.use('/users', usersRouter);
+app.use('/exercises', exercisesRouter);
+app.use('/users', usersRouter);
 
 
 app.listen(port, () => {
