@@ -7,18 +7,22 @@ const mongoose = require('mongoose')
 const app = express();
 const port = process.env.PORT || 4000;
 
-const MongoClient = require('mongodb').MongoClient;
-
 app.use(cors());
 app.use(express.json());
 
 // <------ Database connection ------>
 const uri = process.env.ATLAS_URI;
 
-mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(uri, { 
+  useNewUrlParser: true, 
+  useUnifiedTopology: true,
+  useCreateIndex: true});
+
+
 const connection = mongoose.connection;
 connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
+
+  console.log("You are now connected to the Cloud ATLAS. Welcome aboard.");
 })
 // <------ API Routes ------>
 const exercisesRouter = require('./routes/exercises');

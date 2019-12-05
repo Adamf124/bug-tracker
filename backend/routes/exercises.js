@@ -8,20 +8,20 @@ router.route('/').get((req,res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const username = req.body.username
+    const exercise = req.body.exercise
     const description = req.body.description
     const duration = Number(req.body.duration)
     const date = Date.parse(req.body.date)
 
     const newExercise = new Exercise({
-        username,
+        exercise,
         description,
         duration,
         date,
     });
 
     newExercise.save()
-        .then(() => res.json(`${username} has been added as a new user.`))
+        .then(() => res.json(`The ${exercise} task has been added to the database.`))
         .catch(err => res.status(400).json('Uh oh: ' + err));
     
 });
