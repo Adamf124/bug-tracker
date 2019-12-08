@@ -11,7 +11,8 @@ router.route('/add').post((req, res) => {
   const username = req.body.username;
 
   const newUser = new User({username});  
-  newUser.save()
+  newUser.save(`${username} has been added as a new user in the database.`)
+  console.log()
     .then(() => res.json(`${username} has been added as a new user in the database.`))
     .catch(err => res.status(400).json('Error: ' + err));
 });
