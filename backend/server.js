@@ -28,10 +28,11 @@ connection.once('open', () => {
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 
+app.use('/', express.static('public'))
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 
 
 app.listen(port, () => {
-    console.log(`You're all set space cowboy. The app is running on port: ${port}`);
+    console.log(`You're all set space cowboy. The app is running on port: http://localhost:${port}`);
 });
