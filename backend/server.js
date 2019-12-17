@@ -1,4 +1,5 @@
 require('dotenv').config();
+var path = require("path");
 
 const express = require('express');
 const cors = require('cors');
@@ -28,9 +29,14 @@ connection.once('open', () => {
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 
-app.use('/', express.static('public'))
+app.use(express.static(path.join(__dirname, "../client/build")));
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
+
+/*React root*/
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "../client/build/index.html"));
+  });
 
 
 app.listen(port, () => {
