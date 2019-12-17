@@ -23,7 +23,7 @@ export default class CreateExercise extends Component {
     }
 
         componentDidMount() {
-            axios.get('http://localhost:4000/users/')
+            axios.get('https://localhost:4000/users/')
             .then(response => {
               if (response.data.length > 0) {
                 this.setState({ 
@@ -67,7 +67,7 @@ export default class CreateExercise extends Component {
             }
             console.log(exercise)
             
-            axios.post('http://localhost:4000/exercises/add',exercise)
+            axios.post('https://localhost:4000/exercises/add',exercise)
             .then(res => console.log(res.data));
             this.props.history.push('/')
         }
