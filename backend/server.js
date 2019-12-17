@@ -29,13 +29,13 @@ connection.once('open', () => {
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 
-app.use(express.static(path.join(__dirname, "../client/build")));
+app.use(express.static(path.join(__dirname, "../build")));
 app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 
 /*React root*/
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "../client/build/index.html"));
+  res.sendFile(path.join(__dirname + "../build/index.html"));
   });
 
 
