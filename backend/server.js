@@ -1,6 +1,7 @@
 require('dotenv').config();
 var path = require("path");
 
+
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose')
@@ -34,9 +35,9 @@ app.use('/exercises', exercisesRouter);
 app.use('/users', usersRouter);
 
 /*React root*/
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname + "../build/index.html"));
-  });
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname + "../build/index.html"));
+//   });
 
 
 app.listen(port, () => {
