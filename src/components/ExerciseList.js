@@ -31,15 +31,7 @@ export default class ExerciseList extends Component {
                 console.log(error)
             })
         }
-        componentWillUpdate() {
-                axios.get('/exercises/')
-                .then( response => {
-                    this.setState({ exercises: response.data})
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-        }
+        
         deleteExercise(id) {
             axios.delete('/exercises/'+id)
             .then(res => console.log(res.data))
