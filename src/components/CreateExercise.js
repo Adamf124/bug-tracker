@@ -56,6 +56,7 @@ export default class CreateExercise extends Component {
                 date: Date
             })
         }
+
         onSubmit(e) {
             e.preventDefault();
 
@@ -69,7 +70,8 @@ export default class CreateExercise extends Component {
             
             axios.post('exercises/add',exercise)
             .then(res => console.log(res.data));
-            this.props.history.push('/')
+            setTimeout(()=>this.props.history.push('/'), 1000);
+            
         }
     render() {
         return (
