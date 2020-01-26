@@ -27,6 +27,7 @@ export default class CreateUser extends Component {
         this.setState({
             username: ''
         })
+        setTimeout(()=>this.props.history.push('/create'), 500)
 
     }
     render() {
