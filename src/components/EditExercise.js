@@ -23,7 +23,7 @@ export default class EditExercise extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://localhost:4000/exercises/'+this.props.match.params.id)
+    axios.get('/exercises/'+this.props.match.params.id)
       .then(response => {
         this.setState({
           username: response.data.username,
@@ -36,7 +36,7 @@ export default class EditExercise extends Component {
         console.log(error);
       })
 
-    axios.get('https://localhost:4000/users/')
+    axios.get('/users/')
       .then(response => {
         this.setState({ users: response.data.map(user => user.username) });
       })

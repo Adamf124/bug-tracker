@@ -22,11 +22,12 @@ export default class CreateUser extends Component {
             username: this.state.username,
         }
         console.log(newUser)
-        axios.post('https://localhost:4000/users/add', newUser)
+        axios.post('/users/add', newUser)
         .then(res => console.log(res.data),console.error());
         this.setState({
             username: ''
         })
+
     }
     render() {
         return (

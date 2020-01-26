@@ -23,7 +23,7 @@ export default class ExerciseList extends Component {
         this.state = {exercises: []}
         }
         componentDidMount() {
-            axios.get('https://localhost:4000/exercises/')
+            axios.get('/exercises/')
             .then( response => {
                 this.setState({ exercises: response.data})
             })
