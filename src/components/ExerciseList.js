@@ -10,7 +10,7 @@ const Exercise = props => (
       <td>{props.exercise.date.substring(0,10)}</td>
       <td>
       {/* eslint-disable-next-line */}
-        <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="#" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
+        <Link to={"/edit/"+props.exercise._id}>edit</Link> | <a href="" onClick={() => { props.deleteExercise(props.exercise._id) }}>delete</a>
       </td>
     </tr>
   )
@@ -35,9 +35,10 @@ export default class ExerciseList extends Component {
         deleteExercise(id) {
             axios.delete('/exercises/'+id)
             .then(res => console.log(res.data))
+          
         }
         exerciseList() {
-            return this.state.exercises.map(currentexercise => {
+            return this.state.exercises.reverse().map(currentexercise => {
               return <Exercise exercise={currentexercise} deleteExercise={this.deleteExercise} key={currentexercise._id}/>;
             })
           }
