@@ -67,7 +67,7 @@ export default class CreateExercise extends Component {
             }
             console.log(exercise)
             
-            axios.post('https://localhost:4000/exercises/add',exercise)
+            axios.post('exercises/add',exercise)
             .then(res => console.log(res.data));
             this.props.history.push('/')
         }
