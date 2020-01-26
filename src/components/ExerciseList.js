@@ -31,7 +31,7 @@ export default class ExerciseList extends Component {
                 console.log(error)
             })
         }
-        componentDidUpdate() {
+        componentWillUpdate() {
                 axios.get('/exercises/')
                 .then( response => {
                     this.setState({ exercises: response.data})
