@@ -38,7 +38,8 @@ export default class ExerciseList extends Component {
           
         }
         exerciseList() {
-            return this.state.exercises.reverse().map(currentexercise => {
+            return this.state.exercises.reverse()
+            .map(currentexercise => {
               return <Exercise 
               exercise={currentexercise} 
               deleteExercise={this.deleteExercise} 

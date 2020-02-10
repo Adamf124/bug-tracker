@@ -18,7 +18,6 @@ export default class UsersList extends Component {
             .then( response => {
                 console.log(response.data)
                 this.setState({ users: response.data})
-                console.log(this.state)
             })
             .catch((error) => {
                 console.log(error)
@@ -26,7 +25,7 @@ export default class UsersList extends Component {
         }
         usersList() {
             return this.state.users.map(users => {
-                console.log(users)
+                // console.log(users.username)
               return <User 
               users={users} 
               key={users._id}
@@ -37,7 +36,7 @@ export default class UsersList extends Component {
         return (
             <div>
                 <table className="table">
-                    <thead className="thead-light">
+                    <thead className="thead-light fadeblock">
                         <tr>
                             <th>Username</th>
                             <th>Created On</th>
